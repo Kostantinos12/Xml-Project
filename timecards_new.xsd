@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="TimeCards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="EnterpriseDtls"/>
+        <xs:element ref="Projects"/>
+        <xs:element ref="Employees"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnterpriseDtls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Img"/>
+        <xs:element ref="Enterprise_Name"/>
+        <xs:element ref="Address"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Img">
+    <xs:complexType>
+      <xs:attribute name="src" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Enterprise_Name" type="xs:string"/>
+  <xs:element name="Address" type="xs:string"/>
+  <xs:element name="Projects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Project"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Employees">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Employee"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Employee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Name"/>
+        <xs:element ref="Manager"/>
+        <xs:element ref="Belongs_to_dept"/>
+        <xs:element maxOccurs="unbounded" ref="Dates_of_week"/>
+      </xs:sequence>
+      <xs:attribute name="ID" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Name" type="xs:string"/>
+  <xs:element name="Manager" type="xs:string"/>
+  <xs:element name="Belongs_to_dept" type="xs:string"/>
+  <xs:element name="Dates_of_week">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="timesheet"/>
+        <xs:element ref="Rates_per_hour"/>
+        <xs:element ref="All_TotalHours"/>
+        <xs:element ref="Tasks"/>
+      </xs:sequence>
+      <xs:attribute name="format" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="timesheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Date"/>
+        <xs:element ref="Start_Time"/>
+        <xs:element ref="Finish_Time"/>
+        <xs:element ref="Total_Break_Time"/>
+        <xs:element ref="Regular_Hours"/>
+        <xs:element ref="Overtime_Hours"/>
+        <xs:element ref="Sick"/>
+        <xs:element ref="Vacation"/>
+        <xs:element ref="Holiday"/>
+        <xs:element ref="Other"/>
+        <xs:element ref="Total_Hours"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Date">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Dates"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Dates" type="xs:string"/>
+  <xs:element name="Start_Time">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Start_Times"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Start_Times" type="xs:string"/>
+  <xs:element name="Finish_Time">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Finish_Times"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Finish_Times" type="xs:string"/>
+  <xs:element name="Total_Break_Time">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Total_Break_Times"/>
+      </xs:sequence>
+      <xs:attribute name="unit" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Total_Break_Times" type="xs:string"/>
+  <xs:element name="Regular_Hours">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Regular_Hourss"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Regular_Hourss" type="xs:string"/>
+  <xs:element name="Overtime_Hours">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Overtime_Hourss"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Overtime_Hourss" type="xs:string"/>
+  <xs:element name="Sick">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Sicks"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sicks" type="xs:string"/>
+  <xs:element name="Vacation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Vacations"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Vacations" type="xs:string"/>
+  <xs:element name="Holiday">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Holidays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Holidays" type="xs:string"/>
+  <xs:element name="Other">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Others"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Others">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Total_Hours">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Total_Hourss"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Total_Hourss" type="xs:integer"/>
+  <xs:element name="Rates_per_hour">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="rate_per_regular_hrs"/>
+        <xs:element ref="rate_per_overtime_hrs"/>
+        <xs:element ref="rate_per_sick_hrs"/>
+        <xs:element ref="rate_per_vacation_hrs"/>
+        <xs:element ref="rate_per_holiday_hrs"/>
+        <xs:element ref="rate_per_other_hrs"/>
+      </xs:sequence>
+      <xs:attribute name="currency" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rate_per_regular_hrs" type="xs:decimal"/>
+  <xs:element name="rate_per_overtime_hrs" type="xs:decimal"/>
+  <xs:element name="rate_per_sick_hrs" type="xs:decimal"/>
+  <xs:element name="rate_per_vacation_hrs" type="xs:decimal"/>
+  <xs:element name="rate_per_holiday_hrs" type="xs:decimal"/>
+  <xs:element name="rate_per_other_hrs" type="xs:decimal"/>
+  <xs:element name="All_TotalHours">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="total_Regular_Hours"/>
+        <xs:element ref="total_Overtime_Hours"/>
+        <xs:element ref="total_sick_Hours"/>
+        <xs:element ref="total_vacation_Hours"/>
+        <xs:element ref="total_holiday_Hours"/>
+        <xs:element ref="total_other_Hours"/>
+        <xs:element ref="total_total_Hours"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="total_Regular_Hours" type="xs:integer"/>
+  <xs:element name="total_Overtime_Hours" type="xs:integer"/>
+  <xs:element name="total_sick_Hours" type="xs:integer"/>
+  <xs:element name="total_vacation_Hours" type="xs:integer"/>
+  <xs:element name="total_holiday_Hours" type="xs:integer"/>
+  <xs:element name="total_other_Hours" type="xs:integer"/>
+  <xs:element name="total_total_Hours" type="xs:integer"/>
+  <xs:element name="Tasks">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="Project"/>
+        <xs:element ref="Task"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Task">
+    <xs:complexType>
+      <xs:attribute name="nameTask" use="required"/>
+      <xs:attribute name="project" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Project">
+    <xs:complexType mixed="true">
+      <xs:attribute name="name"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
